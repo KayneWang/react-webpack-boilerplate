@@ -1,12 +1,12 @@
 {
-  "name": "listen_frontend",
+  "name: "react-webpack-boilerplate",
   "version": "1.0.0",
-  "description": "谛听前端",
+  "description": "react-webpack-boilerplate",
   "main": "index.js",
   "author": "kayne",
   "license": "MIT",
   "repository": {
-    "url": "http://git.ppdaicorp.com/wangzengkai/listen_frontend"
+    "url": "https://github.com/KayneWang/react-webpack-boilerplate"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --progress --config webpack.dev.js",
