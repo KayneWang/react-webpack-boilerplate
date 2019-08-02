@@ -1,6 +1,8 @@
 const merge = require('webpack-merge')
 const common = require('./webpack.common')
 const path = require('path')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const notifier = require('node-notifier')
 
 module.exports = merge(common, {
   output: {
@@ -14,6 +16,26 @@ module.exports = merge(common, {
     contentBase: './dist',
     compress: true,
     hot: true,
-    clientLogLevel: 'none'
-  }
+    clientLogLevel: 'none',
+    quiet: true,
+    overlay: true,
+  },
+  plugins: [
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: ['You application is running http://localhost:1234']
+      },
+      onErrors: (severity, errors) => {
+        if (severity !== 'error') {
+          return;
+        }
+        const error = errors[0];
+        notifier.notify({
+          title: 'Webpack error',
+          message: severity + ': ' + error.name,
+          subtitle: error.file || ''
+        });
+      }
+    }),
+  ]
 })
