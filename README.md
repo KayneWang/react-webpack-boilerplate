@@ -1,13 +1,14 @@
-# react-webpack-boilerplate
-快速开始react+webpack开发环境搭建
+## react-webpack-boilerplate
 
-## 执行命令
+基于 webpack4 快速搭建 react 开发环境，搭建教程[参考](https://github.com/KayneWang/blog/blob/master/webpack4-react.md)
+
+### 执行命令
 
 ```shell
 $ yarn install
 ```
 
-# 本地开发
+### 本地开发
 
 ```shell
 $ npm run start
