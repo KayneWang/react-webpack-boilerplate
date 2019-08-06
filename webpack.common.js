@@ -1,6 +1,6 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin')
-const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const extractCSS = new ExtractTextPlugin({
   filename: 'css/[name].css',
@@ -9,9 +9,6 @@ const extractCSS = new ExtractTextPlugin({
 
 module.exports = {
   entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, './dist')
-  },
   module: {
     rules: [
       {
@@ -45,27 +42,25 @@ module.exports = {
         })
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)/,
+        test: /\.(png|jpg|jpeg|gif|svg|ico)/,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
               outputPath: 'images/',
-              limit: 10 * 1024
+              name: '[name].[ext]'
             }
           }
         ]
       },
       {
-        test: /\.(eot|woff2?|ttf|svg)$/,
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
-              name: '[name]-[hash:5].min.[ext]',
-              limit: 5000,
-              publicPath: 'fonts/',
-              outputPath: 'fonts/'
+              outputPath: 'fonts/',
+              name: '[name].[ext]'
             }
           }
         ]
@@ -73,6 +68,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: 'index.html'
