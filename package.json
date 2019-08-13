@@ -74,7 +74,9 @@
     "webpack-merge": "^4.2.1"
   },
   "browserslist": [
-    ">2%",
-    "not ie <= 11"
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
   ]
 }

@@ -25,12 +25,11 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'css-loader',
             {
-              loader: 'postcss-loader',
-              options: {
-                path: 'postcss.config.js'
-              }
+              loader: 'css-loader'
+            },
+            {
+              loader: 'postcss-loader'
             },
             {
               loader: 'less-loader',
